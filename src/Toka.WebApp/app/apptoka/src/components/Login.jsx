@@ -5,7 +5,7 @@ export default class Login extends Component {
         return (
             <div>
                 <div className="container">
-                    <div className="row">
+                    <div className="row container">
                         <div className="col s12 m7">
                             <div className="card">                                                               
                                 <div className="row container">
@@ -14,13 +14,14 @@ export default class Login extends Component {
                                         <label for="password">Email</label>
                                     </div>
                                 </div>
-                                <div className="row">
+                                <div className="row container">
                                     <div className="input-field col s12">
                                         <input id="password" type="password" className="validate" />
                                         <label for="password">Password</label>
                                     </div>
                                 </div> 
-                            </div>
+                                <a class="waves-effect waves-light btn">button</a>
+                            </div>                            
                         </div>
                     </div>
                 </div>

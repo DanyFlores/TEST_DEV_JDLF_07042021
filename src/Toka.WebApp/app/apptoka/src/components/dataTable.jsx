@@ -7,10 +7,8 @@ import axios from 'axios';
 export default class dataTable extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            tableInfo: {                             
-                data: []               
-            }          
+        this.state = {                                     
+            data: []                            
         }
     }
 
@@ -18,24 +16,25 @@ export default class dataTable extends Component {
         await this.getAll();             
     }    
     getAll = async () => {
-        let tableInfo = this.state.tableInfo;
+        let data = this.state.data;
         axios.get(`http://localhost:26112/api/PhysicalPerson`)
             .then(res => {
-                tableInfo["data"] = res.data;
+                this.setState({
+                    data:res.data
+                });
+                // data = res.data;             
                 console.log(res.data);
             })
             .catch((e) => {
                 console.error(e);
-            });       
-        this.setState({
-            tableInfo: tableInfo
-        });
+            });             
     };
 
     render() {
         return (
             <div style={{ maxWidth: '100%' }}>
                 <MaterialTable
+                title="Listado de Personas"
                 columns={[
                     { title: 'Nombre', field: 'nombre' },
                     { title: 'Apellido Paterno', field: 'apellidoPaterno' },
@@ -43,11 +42,24 @@ export default class dataTable extends Component {
                     { title: 'FRC', field: 'rfc' },
                     { title: 'Fecha de Nacimiento', field: 'fechaNacimiento' }
                 ]}
-                data={this.state.tableInfo["data"]}
-                options={{
-                    exportButton: true
-                }}
-                title="Listado de Personas"
+                data={this.state.data}                
+                actions={[
+                    {
+                        icon: 'edit',
+                        tooltip: 'Editar Persona',
+                        // onClick: (event, rowData) => alert("You saved " + rowData.name)
+                        },
+                        rowData => ({
+                        icon: 'delete',
+                        tooltip: 'Eliminar Persona',
+                        // onClick: (event, rowData) => confirm("You want to delete " + rowData.name),
+                        disabled: rowData.birthYear < 2000
+                        })
+                    ]}
+                    options={{
+                        exportButton: true,
+                        actionsColumnIndex: -1
+                    }}
                 />
             </div>
 
