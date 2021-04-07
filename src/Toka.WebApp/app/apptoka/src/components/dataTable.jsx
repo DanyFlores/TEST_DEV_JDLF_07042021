@@ -16,7 +16,6 @@ export default class dataTable extends Component {
         await this.getAll();             
     }    
     getAll = async () => {
-        let data = this.state.data;
         axios.get(`http://localhost:26112/api/PhysicalPerson`)
             .then(res => {
                 this.setState({
@@ -29,6 +28,20 @@ export default class dataTable extends Component {
                 console.error(e);
             });             
     };
+
+    deleteSubmit (Id) {        
+        axios.delete(`http://localhost:26112/api/PhysicalPerson/${Id}`)
+            .then(res => {
+                this.setState({
+                    data:res.data
+                });
+                // data = res.data;             
+                console.log(res.data);
+            })
+            .catch((e) => {
+                console.error(e);
+            });  
+    }; 
 
     render() {
         return (
@@ -47,12 +60,12 @@ export default class dataTable extends Component {
                     {
                         icon: 'edit',
                         tooltip: 'Editar Persona',
-                        // onClick: (event, rowData) => alert("You saved " + rowData.name)
+                        onClick: (event, rowData) => alert("You saved " + rowData.name)
                         },
                         rowData => ({
                         icon: 'delete',
                         tooltip: 'Eliminar Persona',
-                        // onClick: (event, rowData) => confirm("You want to delete " + rowData.name),
+                        onClick: (event, rowData) => alert("You want to delete " + rowData.name),
                         disabled: rowData.birthYear < 2000
                         })
                     ]}
