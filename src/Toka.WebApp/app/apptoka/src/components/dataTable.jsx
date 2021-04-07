@@ -60,12 +60,12 @@ export default class dataTable extends Component {
                     {
                         icon: 'edit',
                         tooltip: 'Editar Persona',
-                        onClick: (event, rowData) => alert("You saved " + rowData.name)
+                        // onClick: (event, rowData) => alert("You saved " + rowData.name)
                         },
                         rowData => ({
                         icon: 'delete',
                         tooltip: 'Eliminar Persona',
-                        onClick: (event, rowData) => alert("You want to delete " + rowData.name),
+                        // onClick: (event, rowData) => alert("You want to delete " + rowData.name),
                         disabled: rowData.birthYear < 2000
                         })
                     ]}
