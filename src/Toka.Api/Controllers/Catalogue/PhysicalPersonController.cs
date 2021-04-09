@@ -53,7 +53,8 @@ namespace Toka.Api.Controllers.Catalogue
         /// <param name="person"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> AddAsync(PhysicalPersonModel person)
+        //[ProducesResponseType(typeof(PhysicalPersonModel),StatusCodes.Status200OK)]
+        public async Task<IActionResult> AddAsync([FromBody] PhysicalPersonModel person)
         {
             try
             {
@@ -66,12 +67,12 @@ namespace Toka.Api.Controllers.Catalogue
             }
         }
 
-        [HttpGet("Id")]
-        public async Task<IActionResult> GetAsync(int Id)
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetAsync(int id)
         {
             try
             {
-                var result = await _personService.GetAsync(Id);
+                var result = await _personService.GetAsync(id);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -86,8 +87,8 @@ namespace Toka.Api.Controllers.Catalogue
         /// <param name="person"></param>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpPut]
-        public async Task<IActionResult> UpdateAsync(PhysicalPersonModel person, int id)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateAsync([FromBody] PhysicalPersonModel person, int id)
         {
             try
             {
@@ -105,7 +106,7 @@ namespace Toka.Api.Controllers.Catalogue
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(int id)
         {
             try

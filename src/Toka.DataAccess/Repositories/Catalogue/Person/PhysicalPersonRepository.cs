@@ -144,7 +144,7 @@ namespace Toka.DataAccess.Repositories.Catalogue.Person
                             dynamicParameters.Add("@RFC", element.RFC);
                             dynamicParameters.Add("@FechaNacimiento", element.FechaNacimiento);
                             dynamicParameters.Add("@UsuarioAgrega", 1);
-                            var result = await conexion.ExecuteAsync("[dbo].[sp_ActualizarPersonaFisica]", param: dynamicParameters, transaction: tran, commandType: CommandType.StoredProcedure);                            
+                            await conexion.ExecuteAsync("[dbo].[sp_ActualizarPersonaFisica]", param: dynamicParameters, transaction: tran, commandType: CommandType.StoredProcedure);                            
                             tran.Commit();
                             return element;
                         }
