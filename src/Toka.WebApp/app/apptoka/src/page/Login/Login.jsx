@@ -30,6 +30,8 @@ const Login = (props) => {
                 alert(e.response.data.message);                
                 setLoadin(false);
             });    
+        setCorreo('');
+        setPassword('');
         setLoadin(false);
     }
 

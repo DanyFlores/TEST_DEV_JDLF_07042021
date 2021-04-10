@@ -72,11 +72,13 @@ const DataTable = () => {
         api.delete(`/PhysicalPerson/${oldData.idPersonaFisica}`)
             .then(res => {
                 const dataDelete = [...data];
-                console.log("delete",dataDelete);
-                const index = oldData.tableData.idPersonaFisica;
-                console.log(index);
-                dataDelete.splice(index,1);
-                setData([...dataDelete]);
+
+                const index = oldData.idPersonaFisica;   
+
+                let newarray = dataDelete.filter((X) =>{
+                    return X.idPersonaFisica != index; 
+                });              
+                setData([...newarray]);
                 resolve();
             })
             .catch((e) => {
