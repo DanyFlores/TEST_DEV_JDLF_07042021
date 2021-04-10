@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Toka.Api.Utilities;
+using Toka.Bussines.Contracts.Models.User;
 using Toka.Bussines.Contracts.Services.User;
 
 namespace Toka.Api.Controllers.User
@@ -30,11 +31,11 @@ namespace Toka.Api.Controllers.User
         /// <param name="password"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> Login(string email, string password)
+        public async Task<IActionResult> Login([FromBody] UserModel model)
         {
             try
             {
-                var user = await _userService.GetUserByEmailAndPassword(email, password, 1);
+                var user = await _userService.GetUserByEmailAndPassword(model.Correo, model.Password, 1);
                 if (user != null)
                 {
                    user.Token = new JwtUtility().GenerateJSONWebToken(user);

@@ -34,7 +34,7 @@ namespace Toka.DataAccess.Repositories.Catalogue.Person
                             dynamicParameters.Add("@FechaNacimiento", element.FechaNacimiento);
                             dynamicParameters.Add("@UsuarioAgrega", IdUsuario);
 
-                            await conexion.ExecuteAsync("[dbo].[sp_AgregarPersonaFisica]", param: dynamicParameters, transaction: tran, commandType: CommandType.StoredProcedure);
+                            var result = await conexion.ExecuteAsync("[dbo].[sp_AgregarPersonaFisica]", param: dynamicParameters, transaction: tran, commandType: CommandType.StoredProcedure);
                             tran.Commit();
                             return element;
                         }

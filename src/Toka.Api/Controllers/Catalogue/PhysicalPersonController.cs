@@ -13,7 +13,7 @@ namespace Toka.Api.Controllers.Catalogue
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json")]
-    //[Authorize]
+    [Authorize]
     public class PhysicalPersonController : ControllerBase
     {
         #region Properties

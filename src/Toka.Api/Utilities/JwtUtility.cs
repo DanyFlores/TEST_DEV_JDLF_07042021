@@ -40,7 +40,7 @@ namespace Toka.Api.Utilities
             var token = new JwtSecurityToken(issuer,
                 issuer,
                 claims,
-                expires: DateTime.Now.AddMonths(12),
+                expires: DateTime.UtcNow.AddDays(1),
                 signingCredentials: credentials);
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
