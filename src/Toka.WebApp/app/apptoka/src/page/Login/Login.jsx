@@ -12,7 +12,7 @@ const Login = (props) => {
 
     useEffect(() => {
         if(auth.token() !== null)
-            props.history.push('/persona-fisica');
+            props.push('/persona-fisica');
     }, [])
 
     const loginSubmit = async (e) => {
@@ -43,14 +43,14 @@ const Login = (props) => {
                         <div className="card fat">
                             <form action="" style={{background:'darkgrey'}} onSubmit={loginSubmit}>
                                 <div className="card-body">
-                                    <h4 className="card-title text-center">Inicio de Sesion</h4>
+                                    <h4 className="card-title text-center">Iniciar sesión</h4>
                                     <div className="form-group mt-5">
-                                        <label for="email">Correo</label>
-                                        <input id="email" type="email" className="form-control" placeholder="Ingrese su Email" name="email" onChange={(e)=>setCorreo(e.target.value)} required autofocus></input>
+                                        <label>Correo</label>
+                                        <input id="email" type="email" className="form-control" placeholder="Ingrese su Correo" name="email" onChange={(e)=>setCorreo(e.target.value)} required></input>
                                     </div>
-                                    <div classNameName="form-group">
-                                        <label for="password">Contraseña</label>
-                                        <input id="password" type="password" className="form-control" placeholder="Ingrese su Password" name="password" onChange={(e)=>setPassword(e.target.value)} required data-eye></input>
+                                    <div className="form-group">
+                                        <label>Contraseña</label>
+                                        <input id="password" type="password" className="form-control" placeholder="Ingrese su Contraseña" name="password" onChange={(e)=>setPassword(e.target.value)} required data-eye></input>
                                     </div>                                    
                                     <div className="form-group mt-5">
                                         <button type="submit" className="btn btn-dark btn-block"> 
