@@ -15,7 +15,7 @@ namespace Toka.Api.Converts
             {
                 Instance = Path,
                 Status = 400,
-                Type = "http://www.cidfares.com.mx.negox.com/",
+                Type = "http://www.localhost:3000/",
                 Detail = "Revisa los siguiente errores"
             };
             return new BadRequestObjectResult(problemDetails)

@@ -31,7 +31,7 @@ namespace Toka.Api.Utilities
                 new Claim(JwtRegisteredClaimToka.IdCuentaUsuario, login.IdCuentaUsuario.ToString()),
                 new Claim(JwtRegisteredClaimToka.IdRol, login.IdRol.ToString()),
                 new Claim(JwtRegisteredClaimToka.Nombres, login.Nombres),
-                new Claim(JwtRegisteredClaimToka.Correo, login.Correo.ToString()),
+                new Claim(JwtRegisteredClaimToka.Correo, login.Correo),
                 new Claim(JwtRegisteredClaimToka.Rol, login.Rol),
                 new Claim(JwtRegisteredClaimNames.Jti, SQLGuidUtil.NewSequentialId().ToString()),
                 new Claim(ClaimTypes.Role, login.Rol)

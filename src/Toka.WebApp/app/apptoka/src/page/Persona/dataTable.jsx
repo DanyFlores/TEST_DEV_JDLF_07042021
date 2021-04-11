@@ -76,7 +76,7 @@ const DataTable = () => {
                 const index = oldData.idPersonaFisica;   
 
                 let newarray = dataDelete.filter((X) =>{
-                    return X.idPersonaFisica != index; 
+                    return X.idPersonaFisica !== index; 
                 });              
                 setData([...newarray]);
                 resolve();

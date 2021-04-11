@@ -8,15 +8,12 @@ function App() {
   return (
     <div>          
       <BrowserRouter>
-        {/* <Switch> */}
+        <Switch>
           <Route exact path="/" component={Login}/>
           <PrivateRoute  path="/persona-fisica" component={DataTable} /> 
           <PrivateRoute  path="/reportes" component={Reporte}/>         
-        {/* </Switch>                 */}
+        </Switch>                
       </BrowserRouter>
-      {/* <Header/> */}
-      {/* <Login/> */}
-      {/* <DataTable/> */}
     </div>
   );
 }
