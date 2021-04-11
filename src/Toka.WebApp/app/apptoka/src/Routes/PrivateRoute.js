@@ -4,18 +4,10 @@ import AuthLogin from '../Utils/AuthLogin';
 
 const auth = new AuthLogin();
 
-function PrivateRoute({ Component: Component, ...rest }) {    
+function PrivateRoute({ Component: Component, ...rest }) {        
     return (
-        <Route 
-            {...rest} 
-            render={(props) =>{
-                // if (true){
-                //     return <Component/>
-                // }else{
-                //     return (<Redirect to={{pathname: "/", state:{from: props.location}}} />);
-                // }
-                auth.useAuth ? <Component/> : <Redirect to={{ pathname: '/', state: { from: props } }} />
-            }}
+        <Route {...rest} 
+            render={(props) =>{auth.seAuth() ? <Component/> : <Redirect to={{ pathname: '/', state: { from: props } }} />}}
         />
     );
 }

@@ -14,9 +14,6 @@ function App() {
           <PrivateRoute  path="/reportes" component={Reporte}/>         
         </Switch>                
       </BrowserRouter>
-      {/* <Header/> */}
-      {/* <Login/> */}
-      {/* <DataTable/> */}
     </div>
   );
 }

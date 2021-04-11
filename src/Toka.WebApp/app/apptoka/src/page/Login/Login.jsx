@@ -12,7 +12,7 @@ const Login = (props) => {
 
     useEffect(() => {
         if(auth.token() !== null)
-            props.push('/persona-fisica');
+            props.history.push('/persona-fisica');
     }, [])
 
     const loginSubmit = async (e) => {
